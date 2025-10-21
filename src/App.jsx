@@ -1,3 +1,4 @@
+import './styles/App.css'
 import { Route, Routes } from 'react-router'
 import { HomeLayout } from './layouts/HomeLayout'
 import { HomePage } from './pages/HomePage'

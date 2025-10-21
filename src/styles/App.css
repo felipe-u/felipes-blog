@@ -1,0 +1,39 @@
+header {
+  text-align: center;
+}
+
+header > h1 {
+  font-size: 3em;
+  padding: 35px 0;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 500px;
+  margin: 0 auto;
+}
+
+.nav-container a {
+  font-size: 1.1em;
+  text-decoration: none;
+  color: whitesmoke;
+  padding: 5px 25px;
+  background-color: var(--main-color);
+  border-radius: 5px 5px 0 0;
+  transition: 0.3s ease;
+}
+
+.nav-container a:hover {
+  background-color: var(--light-color);
+}
+
+.nav-container a.active {
+  background-color: var(--dark-color);
+}
+
+main {
+  min-height: calc(100vh - 170px);
+  background-color: var(--dark-color);
+}

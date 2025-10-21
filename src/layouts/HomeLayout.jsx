@@ -5,7 +5,7 @@ export function HomeLayout() {
     <>
       <header>
         <h1>Felipe's Blog</h1>
-        <nav>
+        <nav className='nav-container'>
           <NavLink to='/'>Home</NavLink>
           <NavLink to='/entries'>Entries</NavLink>
           <NavLink to='/about'>About</NavLink>

@@ -1,0 +1,17 @@
+:root {
+  --main-color: #112735;
+  --dark-color: #0e1920;
+  --light-color: #32404a;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #222;
+  color: whitesmoke;
+  font-family: system-ui;
+}
