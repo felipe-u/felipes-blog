@@ -26,7 +26,7 @@ header > h1 {
 }
 
 .nav-container a:hover {
-  background-color: var(--light-color);
+  background-color: var(--light1-color);
 }
 
 .nav-container a.active {

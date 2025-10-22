@@ -46,3 +46,41 @@ export function PenIcon() {
     </svg>
   )
 }
+
+export function EditPenIcon() {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      viewBox='0 0 24 24'
+      fill='lightgray'
+    >
+      <path d='M20.7 5.2a1.024 1.024 0 0 1 0 1.448l-2.626 2.628-3.35-3.35L17.35 3.3a1.024 1.024 0 0 1 1.448 0zm-4.166 5.614-3.35-3.35-8.509 8.511L3 21l5.025-1.675z' />
+    </svg>
+  )
+}
+
+export function TrashCanIcon() {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      viewBox='0 0 32 32'
+      fill='lightgray'
+    >
+      <g data-name='70-Trash'>
+        <path d='m29.89 6.55-1-2A1 1 0 0 0 28 4h-7V2a2 2 0 0 0-2-2h-6a2 2 0 0 0-2 2v2H4a1 1 0 0 0-.89.55l-1 2A1 1 0 0 0 3 8h2v22a2 2 0 0 0 .47 1.41A2 2 0 0 0 7 32h18a2 2 0 0 0 2-2V8h2a1 1 0 0 0 .89-1.45zM13 2h6v2h-6zm12 28H7V8h18z' />
+        <path d='M17 26V10a2 2 0 0 0-2 2l.06 14H15v2a2 2 0 0 0 2-2zM22 26V10a2 2 0 0 0-2 2l.06 14H20v2a2 2 0 0 0 2-2zM12 26V10a2 2 0 0 0-2 2l.06 14H10v2a2 2 0 0 0 2-2z' />
+      </g>
+    </svg>
+  )
+}
+
+export function SearchIcon() {
+  return (
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'>
+      <path
+        d='m29.43 25.39-6.9-6.9A10.86 10.86 0 0 0 24 13a11 11 0 1 0-5.5 9.52l6.91 6.9a2.06 2.06 0 0 0 1.48.59 3.18 3.18 0 0 0 2.17-1 2.6 2.6 0 0 0 .37-3.62zm-11-5.18A8.89 8.89 0 0 1 13 22a9 9 0 1 1 7.23-3.65 9.33 9.33 0 0 1-1.85 1.86zm9.26 7.41a1 1 0 0 1-.82.38l-6.66-6.65-.05-.05 1.2-1.2h.05L28 26.79a1 1 0 0 1-.36.83z'
+        style={{ fill: 'whitesmoke' }}
+      />
+    </svg>
+  )
+}

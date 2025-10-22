@@ -1,0 +1,102 @@
+.entries-container {
+  padding: 50px 0;
+  margin: 0 auto;
+  width: max-content;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding-bottom: 25px;
+}
+
+.search-container input {
+  font-size: 1.1em;
+  padding: 5px 10px;
+  border: 1px solid var(--light2-color);
+  border-radius: 5px;
+}
+
+.search-container button {
+  width: 30px;
+  padding: 5px;
+  border-radius: 20%;
+  border: none;
+  background-color: var(--light2-color);
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.search-container button:hover {
+  background-color: var(--light1-color);
+}
+
+.entries-container table {
+  border: 1px solid grey;
+  margin: 0 auto;
+  width: 500px;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+.entries-container thead {
+  background-color: var(--light2-color);
+  color: whitesmoke;
+}
+
+.entries-container th,
+.entries-container td {
+  padding: 10px;
+}
+
+.th-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.arrow-span {
+  font-size: 0.6em;
+}
+
+.entries-container tbody {
+  color: lightgray;
+}
+
+.entries-container tr {
+  border: 1px solid grey;
+}
+
+.entries-container th:first-child,
+.entries-container td:first-child {
+  width: 25%;
+}
+
+.actions-cell {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.actions-cell button {
+  width: 25px;
+  height: 25px;
+  padding: 4px;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.actions-cell button:hover {
+  background-color: var(--light1-color);
+}
+
+.actions-cell .trash-btn:hover {
+  background-color: #58171e;
+}
