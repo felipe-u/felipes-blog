@@ -1,0 +1,32 @@
+.about-container {
+  width: 70%;
+  margin: 0 auto;
+  padding-top: 50px;
+}
+
+.about-container h2 {
+  font-size: 2em;
+  text-decoration: underline;
+  text-align: center;
+}
+
+.about-container > p {
+  text-align: center;
+}
+
+.about-container p {
+    font-size: 1.2em;
+}
+
+.about-inner-container {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 20px;
+  padding: 50px 0;
+}
+
+.about-inner-container img {
+  width: 200px;
+  height: 200px;
+}
+
