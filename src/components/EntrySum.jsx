@@ -1,24 +1,24 @@
 import { useNavigate } from 'react-router'
 import { CalendarIcon } from './Icons'
 
-export function EntrySum() {
+export function EntrySum({ postData }) {
   const navigate = useNavigate()
 
   const seeFullEntry = () => {
-    navigate('/entries/1')
+    navigate(`/entries/${postData.id}`)
   }
 
   return (
     <div className='entry-sum-container' onClick={seeFullEntry}>
       <img
-        src='https://i.pinimg.com/1200x/29/a3/5f/29a35f173cd4af4f208348e1bbaf5532.jpg'
-        alt=''
+        src={postData.imgUrl}
+        alt={`${postData.title} image`}
       />
       <div className='sum-data-container'>
-        <h2>Testing Title</h2>
+        <h2>{postData.title}</h2>
         <div className='date-visualizer'>
           <CalendarIcon />
-          <span>2025-10-21</span>
+          <span>{postData.date}</span>
         </div>
       </div>
     </div>
