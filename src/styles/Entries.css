@@ -67,6 +67,11 @@
 
 .entries-container tr {
   border: 1px solid grey;
+  cursor: pointer;
+}
+
+.entries-container tr:hover {
+  background-color: rgba(255, 255, 255, 0.073);
 }
 
 .entries-container th:first-child,
@@ -99,4 +104,61 @@
 
 .actions-cell .trash-btn:hover {
   background-color: #58171e;
+}
+
+/* Single Entry Styles */
+.entry-container {
+  padding: 50px 0;
+}
+
+.entry-content {
+  width: 80%;
+  margin: 0 auto;
+  color: #222;
+  background-color: whitesmoke;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.entry-content h2 {
+  font-size: 2em;
+  padding-bottom: 5px;
+}
+
+.entry-content p:first-of-type {
+  color: grey;
+}
+
+.entry-content img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  margin: 20px 0;
+}
+
+.entry-payload {
+  white-space: pre-line;
+}
+
+.entry-btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 50px;
+}
+
+.entry-btn-container button {
+  font-size: 1.1em;
+  padding: 5px 15px;
+  width: 120px;
+  background-color: var(--light1-color);
+  border: none;
+  border-radius: 5px;
+  color: whitesmoke;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.entry-btn-container button:hover {
+  background-color: var(--light2-color);
 }

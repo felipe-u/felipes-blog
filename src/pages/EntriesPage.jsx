@@ -1,7 +1,14 @@
+import { useNavigate } from 'react-router'
 import { EditPenIcon, SearchIcon, TrashCanIcon } from '../components/Icons'
 import '../styles/Entries.css'
 
 export function EntriesPage() {
+  const navigate = useNavigate()
+
+  const seeFullEntry = () => {
+    navigate('/entries/1')
+  }
+
   return (
     <div className='entries-container'>
       <div className='search-container'>
@@ -33,10 +40,10 @@ export function EntriesPage() {
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr onClick={seeFullEntry}>
             <td>2025-10-21</td>
             <td>Testing Title</td>
-            <td className='actions-cell'>
+            <td className='actions-cell' onClick={(e) => e.stopPropagation()}>
               <button>
                 <EditPenIcon />
               </button>
