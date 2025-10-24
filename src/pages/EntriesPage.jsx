@@ -3,16 +3,25 @@ import { useNavigate } from 'react-router'
 import { EditPenIcon, SearchIcon, TrashCanIcon } from '../components/Icons'
 import { formatDate } from '../helpers/logic'
 import { useSortPosts } from '../hooks/useSortPosts'
+import { useRef } from 'react'
 
 export function EntriesPage() {
   const navigate = useNavigate()
-
   const {
     sortedPosts,
     sortOptions,
     toggleDateSortOption,
     toggleTitleSortOption,
+    searchPost,
   } = useSortPosts()
+  const inputRef = useRef()
+
+  const onSearchPost = () => {
+    const query = inputRef.current?.value
+    // TODO: with debouncer
+    // if (!query) return
+    searchPost(query)
+  }
 
   const seeFullEntry = (postId) => {
     navigate(`/entries/${postId}`)
@@ -23,8 +32,12 @@ export function EntriesPage() {
       {sortedPosts ? (
         <>
           <div className='search-container'>
-            <input type='text' placeholder='Cinema day, New Mascot...' />
-            <button>
+            <input
+              type='text'
+              placeholder='Cinema day, New Mascot...'
+              ref={inputRef}
+            />
+            <button onClick={onSearchPost}>
               <SearchIcon />
             </button>
           </div>

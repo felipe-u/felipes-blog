@@ -8,34 +8,34 @@ export function useSortPosts() {
     date: 'asc',
     title: 'asc',
   })
+  const [searchQuery, setSearchQuery] = useState('')
 
   useEffect(() => {
-    setSortedPosts(posts)
-  }, [posts, setSortedPosts])
+    let filtered = posts
+    if (searchQuery) {
+      filtered = posts.filter((post) =>
+        post.title.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    }
 
-  useEffect(() => {
-    const postsCopy = [...posts]
-    if (sortOptions.date === 'asc') {
-      setSortedPosts(postsCopy.sort((a, b) => b.date - a.date))
-      return
-    }
-    if (sortOptions.date === 'desc') {
-      setSortedPosts(postsCopy.sort((a, b) => a.date - b.date))
-      return
-    }
-  }, [sortOptions.date, posts])
+    let sorted = [...filtered]
 
-  useEffect(() => {
-    const postsCopy = [...posts]
-    if (sortOptions.title === 'asc') {
-      setSortedPosts(postsCopy.sort((a, b) => a.title.localeCompare(b.title)))
-      return
+    if (sortOptions.date) {
+      sorted.sort((a, b) =>
+        sortOptions.date === 'asc' ? b.date - a.date : a.date - b.date
+      )
     }
-    if (sortOptions.title === 'desc') {
-      setSortedPosts(postsCopy.sort((a, b) => b.title.localeCompare(a.title)))
-      return
+
+    if (sortOptions.title) {
+      sorted.sort((a, b) =>
+        sortOptions.title === 'asc'
+          ? a.title.localeCompare(b.tiitle)
+          : b.title.localeCompare(a.title)
+      )
     }
-  }, [sortOptions.title, posts])
+
+    setSortedPosts(sorted)
+  }, [posts, sortOptions, searchQuery])
 
   const toggleDateSortOption = () => {
     setSortOptions((prevState) => ({
@@ -51,5 +51,15 @@ export function useSortPosts() {
     }))
   }
 
-  return { sortedPosts, sortOptions, toggleDateSortOption, toggleTitleSortOption }
+  const searchPost = (query) => {
+    setSearchQuery(query)
+  }
+
+  return {
+    sortedPosts,
+    sortOptions,
+    toggleDateSortOption,
+    toggleTitleSortOption,
+    searchPost,
+  }
 }
