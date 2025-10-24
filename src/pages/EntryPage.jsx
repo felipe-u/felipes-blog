@@ -17,6 +17,10 @@ export function EntryPage() {
     navigate('/')
   }
 
+  const goEditPage = () => {
+    navigate(`/entries/${entryId}/edit`)
+  }
+
   return (
     <div className='entry-container'>
       {post && (
@@ -29,7 +33,7 @@ export function EntryPage() {
           <p className='entry-payload'>{post.content}</p>
 
           <div className='entry-btn-container'>
-            <button>Edit</button>
+            <button onClick={goEditPage}>Edit</button>
             <button onClick={goHome}>Go Home</button>
           </div>
         </div>

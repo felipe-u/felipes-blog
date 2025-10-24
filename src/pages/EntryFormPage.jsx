@@ -1,18 +1,31 @@
 import '../styles/Entries.css'
-import { useState } from 'react'
-import { useNavigate } from 'react-router'
+import { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router'
 import { usePosts } from '../hooks/usePosts'
 
 export function EntryFormPage() {
   const navigate = useNavigate()
-  const { createPost } = usePosts()
-
+  const { createPost, getPostById, editPost } = usePosts()
+  const { entryId } = useParams()
+  const isEdit = Boolean(entryId)
   const [formData, setFormData] = useState({
     title: '',
     content: '',
     imgUrl: '',
     date: new Date(),
   })
+
+  useEffect(() => {
+    if (isEdit) {
+      const postToEdit = getPostById(entryId)
+      setFormData((prev) => ({
+        ...prev,
+        title: postToEdit.title,
+        content: postToEdit.content,
+        imgUrl: postToEdit.imgUrl,
+      }))
+    }
+  }, [isEdit, entryId, getPostById])
 
   const handleChange = (event) => {
     const { name, value } = event.target
@@ -21,21 +34,26 @@ export function EntryFormPage() {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    createPost(formData)
-    alert('Post Created')
+    if (isEdit) {
+      editPost(entryId, formData)
+      alert('Post updated')
+    } else {
+      createPost(formData)
+      alert('Post Created')
+    }
     navigate('/')
   }
 
   const cancelSubmit = () => {
     if (confirm('Are you sure you want to cancel?')) {
       setFormData({ title: '', content: '', imgUrl: '', date: new Date() })
-      navigate('/')
+      navigate(-1)
     }
   }
 
   return (
     <div className='new-entry-container'>
-      <h2>Write anything you want!</h2>
+      {isEdit ? <h2>Editing...</h2> : <h2>Write anything you want!</h2>}
 
       <form onSubmit={handleSubmit}>
         <div className='input-container'>
@@ -79,7 +97,7 @@ export function EntryFormPage() {
         )}
 
         <div className='btn-container'>
-          <button>Save</button>
+          <button>{isEdit ? 'Save' : 'Upload'}</button>
           <button className='cancel-btn' type='reset' onClick={cancelSubmit}>
             Cancel
           </button>

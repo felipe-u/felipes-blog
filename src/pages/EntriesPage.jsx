@@ -29,6 +29,10 @@ export function EntriesPage() {
     navigate(`/entries/${postId}`)
   }
 
+  const editEntry = (postId) => {
+    navigate(`/entries/${postId}/edit`)
+  }
+
   const onDeletePost = (postId) => {
     if (confirm('Are you sure you want to delete this post?')) {
       deletePostById(postId)
@@ -81,7 +85,7 @@ export function EntriesPage() {
                     className='actions-cell'
                     onClick={(e) => e.stopPropagation()}
                   >
-                    <button>
+                    <button onClick={() => editEntry(post.id)}>
                       <EditPenIcon />
                     </button>
                     <button

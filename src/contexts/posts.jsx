@@ -33,8 +33,18 @@ export function PostsProvider({ children }) {
     setPosts([...posts].filter((post) => post.id !== Number(postId)))
   }
 
+  const editPost = (postId, postData) => {
+    setPosts((prevPosts) =>
+      prevPosts.map((post) =>
+        post.id === Number(postId) ? { ...post, ...postData } : post
+      )
+    )
+  }
+
   return (
-    <PostsContext.Provider value={{ posts, getPostById, createPost, deletePostById }}>
+    <PostsContext.Provider
+      value={{ posts, getPostById, createPost, deletePostById, editPost }}
+    >
       {children}
     </PostsContext.Provider>
   )
