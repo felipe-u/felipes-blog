@@ -4,6 +4,7 @@ import { EditPenIcon, SearchIcon, TrashCanIcon } from '../components/Icons'
 import { formatDate } from '../helpers/logic'
 import { useSortPosts } from '../hooks/useSortPosts'
 import { useRef } from 'react'
+import { usePosts } from '../hooks/usePosts'
 
 export function EntriesPage() {
   const navigate = useNavigate()
@@ -15,6 +16,7 @@ export function EntriesPage() {
     searchPost,
   } = useSortPosts()
   const inputRef = useRef()
+  const { deletePostById } = usePosts()
 
   const onSearchPost = () => {
     const query = inputRef.current?.value
@@ -25,6 +27,12 @@ export function EntriesPage() {
 
   const seeFullEntry = (postId) => {
     navigate(`/entries/${postId}`)
+  }
+
+  const onDeletePost = (postId) => {
+    if (confirm('Are you sure you want to delete this post?')) {
+      deletePostById(postId)
+    }
   }
 
   return (
@@ -76,7 +84,10 @@ export function EntriesPage() {
                     <button>
                       <EditPenIcon />
                     </button>
-                    <button className='trash-btn'>
+                    <button
+                      className='trash-btn'
+                      onClick={() => onDeletePost(post.id)}
+                    >
                       <TrashCanIcon />
                     </button>
                   </td>
