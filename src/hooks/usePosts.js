@@ -8,6 +8,10 @@ export function usePosts() {
     getAllPosts()
   }, [])
 
+  useEffect(() => {
+    console.log('Posts updated')
+  }, [posts])
+
   const getAllPosts = () => {
     setPosts([...allPosts])
   }
@@ -16,5 +20,12 @@ export function usePosts() {
     return allPosts.find((post) => post.id === Number(postId))
   }
 
-  return { posts, getPost }
+  const createPost = (postData) => {
+    const currentPosts = [...posts]
+    const newPost = { ...postData, id: posts.length + 1 }
+    currentPosts.push(newPost)
+    setPosts(currentPosts)
+  }
+
+  return { posts, getPost, createPost }
 }

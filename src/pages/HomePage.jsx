@@ -2,14 +2,20 @@ import '../styles/Home.css'
 import { EntrySum } from '../components/EntrySum'
 import { PenIcon } from '../components/Icons'
 import { usePosts } from '../hooks/usePosts'
+import { useNavigate } from 'react-router'
 
 export function HomePage() {
   const { posts } = usePosts()
+  const navigate = useNavigate()
+
+  const goToNewEntryPage = () => {
+    navigate('/new-entry')
+  }
 
   return (
     <div className='home-container'>
       <div className='new-btn-container'>
-        <button>
+        <button onClick={goToNewEntryPage}>
           New entry
           <PenIcon />
         </button>
