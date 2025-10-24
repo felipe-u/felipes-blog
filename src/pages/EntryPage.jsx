@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router'
 import { usePosts } from '../hooks/usePosts'
+import { formatDate } from '../helpers/logic'
 
 export function EntryPage() {
   const navigate = useNavigate()
@@ -21,7 +22,7 @@ export function EntryPage() {
       {post && (
         <div className='entry-content'>
           <h2>{post.title}</h2>
-          <p>Published at: {post.date}</p>
+          <p>Published at: {formatDate(post.date)}</p>
 
           <img src={post.imgUrl} alt={`${post.title} image`} />
 

@@ -1,11 +1,14 @@
+import '../styles/Entries.css'
 import { useNavigate } from 'react-router'
 import { EditPenIcon, SearchIcon, TrashCanIcon } from '../components/Icons'
-import '../styles/Entries.css'
-import { usePosts } from '../hooks/usePosts'
+import { formatDate } from '../helpers/logic'
+import { useFilterPosts } from '../hooks/useFilterPosts'
 
 export function EntriesPage() {
   const navigate = useNavigate()
-  const { posts } = usePosts()
+
+  const { filteredPosts, filterOptions, toggleDateFilter, toggleTitleFilter } =
+    useFilterPosts()
 
   const seeFullEntry = (postId) => {
     navigate(`/entries/${postId}`)
@@ -13,7 +16,7 @@ export function EntriesPage() {
 
   return (
     <div className='entries-container'>
-      {posts ? (
+      {filteredPosts ? (
         <>
           <div className='search-container'>
             <input type='text' placeholder='Cinema day, New Mascot...' />
@@ -25,29 +28,29 @@ export function EntriesPage() {
           <table>
             <thead>
               <tr>
-                <th>
+                <th onClick={toggleDateFilter}>
                   <span className='th-content'>
-                    Date <span className='arrow-span'>▲</span>
+                    Date
+                    <span className='arrow-span'>
+                      {filterOptions.date === 'asc' ? '▲' : '▼'}
+                    </span>
                   </span>
                 </th>
-                {/* <th>
-              Date <span className='arrow-span'>▼</span>
-            </th> */}
-                <th>
+                <th onClick={toggleTitleFilter}>
                   <span className='th-content'>
-                    Title <span className='arrow-span'>▲</span>{' '}
+                    Title
+                    <span className='arrow-span'>
+                      {filterOptions.title === 'asc' ? '▲' : '▼'}
+                    </span>
                   </span>
                 </th>
-                {/* <th>
-              Title <span className='arrow-span'>▼</span>{' '}
-            </th> */}
                 <th style={{ textAlign: 'center' }}>Actions</th>
               </tr>
             </thead>
             <tbody>
-              {posts.map((post) => (
-                <tr onClick={() => seeFullEntry(post.id)}>
-                  <td>{post.date}</td>
+              {filteredPosts.map((post) => (
+                <tr key={post.id} onClick={() => seeFullEntry(post.id)}>
+                  <td>{formatDate(post.date)}</td>
                   <td>{post.title}</td>
                   <td
                     className='actions-cell'
@@ -66,7 +69,7 @@ export function EntriesPage() {
           </table>
         </>
       ) : (
-        <div className='no-entries'>There's no entry yet</div>
+        <div className='no-entries'>There's no posts yet</div>
       )}
     </div>
   )
