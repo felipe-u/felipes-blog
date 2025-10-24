@@ -81,19 +81,18 @@ export function EntriesPage() {
                 <tr key={post.id} onClick={() => seeFullEntry(post.id)}>
                   <td>{formatDate(post.date)}</td>
                   <td>{post.title}</td>
-                  <td
-                    className='actions-cell'
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <button onClick={() => editEntry(post.id)}>
-                      <EditPenIcon />
-                    </button>
-                    <button
-                      className='trash-btn'
-                      onClick={() => onDeletePost(post.id)}
-                    >
-                      <TrashCanIcon />
-                    </button>
+                  <td onClick={(e) => e.stopPropagation()}>
+                    <div className='actions-cell'>
+                      <button onClick={() => editEntry(post.id)}>
+                        <EditPenIcon />
+                      </button>
+                      <button
+                        className='trash-btn'
+                        onClick={() => onDeletePost(post.id)}
+                      >
+                        <TrashCanIcon />
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}
