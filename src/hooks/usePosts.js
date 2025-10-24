@@ -1,31 +1,12 @@
-import { useEffect, useState } from 'react'
-import { allPosts } from '../data/allPosts'
+import { useContext } from 'react'
+import { PostsContext } from '../contexts/posts'
 
 export function usePosts() {
-  const [posts, setPosts] = useState([])
+  const context = useContext(PostsContext)
 
-  useEffect(() => {
-    getAllPosts()
-  }, [])
-
-  useEffect(() => {
-    console.log('Posts updated')
-  }, [posts])
-
-  const getAllPosts = () => {
-    setPosts([...allPosts])
+  if (context === undefined) {
+    throw new Error('usePosts must be withing a PostsProvider')
   }
 
-  const getPost = (postId) => {
-    return allPosts.find((post) => post.id === Number(postId))
-  }
-
-  const createPost = (postData) => {
-    const currentPosts = [...posts]
-    const newPost = { ...postData, id: posts.length + 1 }
-    currentPosts.push(newPost)
-    setPosts(currentPosts)
-  }
-
-  return { posts, getPost, createPost }
+  return context
 }

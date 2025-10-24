@@ -6,12 +6,12 @@ import { formatDate } from '../helpers/logic'
 export function EntryPage() {
   const navigate = useNavigate()
   const { entryId } = useParams()
-  const { getPost } = usePosts()
+  const { getPostById } = usePosts()
   const [post, setPost] = useState(null)
 
   useEffect(() => {
-    setPost(getPost(entryId))
-  }, [entryId, getPost])
+    setPost(getPostById(entryId))
+  }, [entryId, getPostById])
 
   const goHome = () => {
     navigate('/')
