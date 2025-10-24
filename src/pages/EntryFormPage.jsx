@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router'
 import { usePosts } from '../hooks/usePosts'
 
-export function NewEntry() {
+export function EntryFormPage() {
   const navigate = useNavigate()
   const { createPost } = usePosts()
 
@@ -79,7 +79,7 @@ export function NewEntry() {
         )}
 
         <div className='btn-container'>
-          <button>Send</button>
+          <button>Save</button>
           <button className='cancel-btn' type='reset' onClick={cancelSubmit}>
             Cancel
           </button>

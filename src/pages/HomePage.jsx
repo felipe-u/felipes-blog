@@ -9,7 +9,7 @@ export function HomePage() {
   const navigate = useNavigate()
 
   const goToNewEntryPage = () => {
-    navigate('/new-entry')
+    navigate('/entries/new')
   }
 
   return (
