@@ -3,8 +3,9 @@ import { useNavigate } from 'react-router'
 import { EditPenIcon, SearchIcon, TrashCanIcon } from '../components/Icons'
 import { formatDate } from '../helpers/logic'
 import { useSortPosts } from '../hooks/useSortPosts'
-import { useRef } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import { usePosts } from '../hooks/usePosts'
+import debounce from 'just-debounce-it'
 
 export function EntriesPage() {
   const navigate = useNavigate()
@@ -15,14 +16,21 @@ export function EntriesPage() {
     toggleTitleSortOption,
     searchPost,
   } = useSortPosts()
+  const [query, setQuery] = useState('')
   const inputRef = useRef()
   const { deletePostById } = usePosts()
 
-  const onSearchPost = () => {
+  const debouncedSearchPost = useCallback(
+    debounce((query) => {
+      searchPost(query)
+    }, 300),
+    []
+  )
+
+  const handleSearch = () => {
     const query = inputRef.current?.value
-    // TODO: with debouncer
-    // if (!query) return
-    searchPost(query)
+    setQuery(query)
+    debouncedSearchPost(query)
   }
 
   const seeFullEntry = (postId) => {
@@ -48,8 +56,10 @@ export function EntriesPage() {
               type='text'
               placeholder='Cinema day, New Mascot...'
               ref={inputRef}
+              value={query}
+              onChange={handleSearch}
             />
-            <button onClick={onSearchPost}>
+            <button onClick={handleSearch}>
               <SearchIcon />
             </button>
           </div>
