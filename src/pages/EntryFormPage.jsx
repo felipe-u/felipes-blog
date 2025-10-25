@@ -45,7 +45,10 @@ export function EntryFormPage() {
   }
 
   const cancelSubmit = () => {
-    if (confirm('Are you sure you want to cancel?')) {
+    const areFieldsEmpy =
+      !formData.title && !formData.content && !formData.imgUrl
+
+    if (areFieldsEmpy || confirm('Are you sure you want to cancel?')) {
       setFormData({ title: '', content: '', imgUrl: '', date: new Date() })
       navigate(-1)
     }
