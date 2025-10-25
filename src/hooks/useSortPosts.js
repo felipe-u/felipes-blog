@@ -20,17 +20,17 @@ export function useSortPosts() {
 
     let sorted = [...filtered]
 
-    if (sortOptions.date) {
-      sorted.sort((a, b) =>
-        sortOptions.date === 'asc' ? b.date - a.date : a.date - b.date
-      )
-    }
-
     if (sortOptions.title) {
       sorted.sort((a, b) =>
         sortOptions.title === 'asc'
-          ? a.title.localeCompare(b.tiitle)
+          ? a.title.localeCompare(b.title)
           : b.title.localeCompare(a.title)
+      )
+    }
+
+    if (sortOptions.date) {
+      sorted.sort((a, b) =>
+        sortOptions.date === 'asc' ? b.date - a.date : a.date - b.date
       )
     }
 
@@ -40,6 +40,7 @@ export function useSortPosts() {
   const toggleDateSortOption = () => {
     setSortOptions((prevState) => ({
       ...prevState,
+      title: null,
       date: sortOptions.date === 'asc' ? 'desc' : 'asc',
     }))
   }
@@ -48,6 +49,7 @@ export function useSortPosts() {
     setSortOptions((prevState) => ({
       ...prevState,
       title: sortOptions.title === 'asc' ? 'desc' : 'asc',
+      date: null,
     }))
   }
 
