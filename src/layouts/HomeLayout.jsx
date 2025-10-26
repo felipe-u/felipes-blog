@@ -15,6 +15,11 @@ export function HomeLayout() {
       <main>
         <Outlet />
       </main>
+
+      <footer>
+        <p>Felipe's Blog</p>
+        <p>All rights reserved © 2025</p>
+      </footer>
     </>
   )
 }

@@ -1,10 +1,16 @@
 header {
   text-align: center;
+  background-image: url('https://i.pinimg.com/1200x/58/20/71/582071455401214a2d700e0fda92a792.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: center;
 }
 
 header > h1 {
   font-size: 3em;
   padding: 35px 0;
+  color: whitesmoke;
+  text-shadow: 2px 2px 1px black;
 }
 
 .nav-container {
@@ -37,6 +43,14 @@ header > h1 {
 main {
   min-height: calc(100vh - 170px);
   background-color: var(--dark-color);
+}
+
+footer {
+  padding: 25px 0;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  gap: 20px;
 }
 
 @media (max-width: 500px) {
