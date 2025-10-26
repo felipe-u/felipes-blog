@@ -4,7 +4,7 @@ import { PenIcon } from '../components/Icons'
 import { usePosts } from '../hooks/usePosts'
 import { useNavigate } from 'react-router'
 
-export function HomePage() {
+export default function HomePage() {
   const { posts } = usePosts()
   const navigate = useNavigate()
 

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router'
 import { usePosts } from '../hooks/usePosts'
 
-export function EntryFormPage() {
+export default function EntryFormPage() {
   const navigate = useNavigate()
   const { createPost, getPostById, editPost } = usePosts()
   const { entryId } = useParams()

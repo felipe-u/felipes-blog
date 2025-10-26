@@ -1,6 +1,6 @@
 import '../styles/About.css'
 
-export function AboutPage() {
+export default function AboutPage() {
   return (
     <div className='about-container'>
       <h2>Who am I?</h2>

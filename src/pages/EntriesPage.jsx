@@ -7,7 +7,7 @@ import { useCallback, useRef, useState } from 'react'
 import { usePosts } from '../hooks/usePosts'
 import debounce from 'just-debounce-it'
 
-export function EntriesPage() {
+export default function EntriesPage() {
   const navigate = useNavigate()
   const {
     sortedPosts,

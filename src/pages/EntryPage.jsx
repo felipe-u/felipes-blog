@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router'
 import { usePosts } from '../hooks/usePosts'
 import { formatDate } from '../helpers/logic'
 
-export function EntryPage() {
+export default function EntryPage() {
   const navigate = useNavigate()
   const { entryId } = useParams()
   const { getPostById } = usePosts()
