@@ -1,0 +1,21 @@
+.not-found-container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  gap: 25px;
+}
+
+.not-found-container h2 {
+  padding-top: 50px;
+  font-size: 2em;
+  text-decoration: underline;
+}
+
+.not-found-container img {
+  width: 200px;
+}
+
+.not-found-container p {
+  font-size: 1.5em;
+}

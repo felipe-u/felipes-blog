@@ -25,4 +25,8 @@ export const routes = [
     path: 'about',
     component: lazy(() => import('./pages/AboutPage')),
   },
+  {
+    path: '*',
+    component: lazy(() => import('./pages/NotFoundPage')),
+  },
 ]
